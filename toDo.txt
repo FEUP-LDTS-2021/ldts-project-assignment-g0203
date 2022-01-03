@@ -1,0 +1,3 @@
+- Boundaries, the snake can't go over them.
+- Apples, that should work as coins, for the snake to eat.
+- The snake should be an array that every position will take on the position of the previous one.
