@@ -64,4 +64,17 @@ public class BoardMenu {
         doInput(screen.readInput());
         screen.refresh();
     }
+
+    public void gameOvermenu() throws IOException {
+        screen.clear();
+        textGraphics.setBackgroundColor(TextColor.Factory.fromString("#008000"));
+        textGraphics.putString(10, 1, "Game Over");
+        textGraphics.putString(1, 3, "Would you like to try again? ");
+        textGraphics.drawRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 10), '*');
+        textGraphics.putString(1, 4, "Yes.");
+        textGraphics.putString(1, 5, "No.");
+        screen.refresh();
+        doInput(screen.readInput());
+        screen.refresh();
+    }
 }

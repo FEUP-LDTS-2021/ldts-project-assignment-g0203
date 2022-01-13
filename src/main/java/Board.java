@@ -59,14 +59,13 @@ public class Board {
         }
     }
 
-    public void moveSnake(Position position) {
+    public void moveSnake(Position position) throws IOException {
         if (canSnakeMove(position)) {
             baby.setPosition(position);
         }
         else {
-            // TO DO:
-            // CREATE A POP UP IN CASE YOU HIT A WALL
-            // AND CLOSE THE GAME :)
+            BoardMenu gameOver = new BoardMenu();
+            gameOver.gameOvermenu();
             System.out.println("You went out of boundaries!");
         }
         retrieveApples(position);
