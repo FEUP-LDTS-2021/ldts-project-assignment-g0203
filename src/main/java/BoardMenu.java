@@ -74,7 +74,20 @@ public class BoardMenu {
         textGraphics.putString(1, 4, "Yes.");
         textGraphics.putString(1, 5, "No.");
         screen.refresh();
-        doInput(screen.readInput());
+        doInputOver(screen.readInput());
         screen.refresh();
+    }
+
+    private void doInputOver(KeyStroke key) throws IOException {
+        switch (key.getCharacter()) {
+            case 'y' -> {
+                Menu menu = new Menu(40, 10);
+                menu.run();
+            }
+            case 'n' -> {
+                System.exit(0);
+            }
+            default -> System.out.println("Unknown error");
+        }
     }
 }
