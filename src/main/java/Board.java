@@ -19,14 +19,14 @@ public class Board {
     private List<Apple> apples = new ArrayList<>();
     private BoardMenu boardMenu;
     public boolean available = true;
-    public Position snake[] = new Position[width * height];
+    public Position snake[] = new Position[10000];
     public int size;
 
     public Board(int width, int height) {
         this.width = width;
         this.height = height;
         baby = new Snake(width/2,height/2);
-        //snake[0] = baby.position;
+        snake[0] = baby.position;
         this.walls = createWalls();
         this.apples = createApples();
         this.size = 1;
@@ -81,6 +81,12 @@ public class Board {
                 return false;
             }
         }
+        for (int i = size - 1; i > 0; i--) {
+            snake[i] = snake[i - 1];
+        }
+        for (int i = 1; i < size; i++) {
+            if (snake[0] == snake [i]) return false;
+        }
         return true;
     }
 
@@ -118,6 +124,7 @@ public class Board {
         size++;
         Snake body = new Snake(position.getX(), position.getY() - 1);
         snake[size - 1] = body.position;
-        body.draw(boardMenu.textGraphics);
+
+
     }
 }
