@@ -118,7 +118,7 @@ public class Board {
             apple.draw(graphics);
     }
 
-    private void drawSnake(Position position) {
+    public void drawSnake(Position position) {
 
         size++;
         Snake body = new Snake(position.getX(), position.getY() - 1);

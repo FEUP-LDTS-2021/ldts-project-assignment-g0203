@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SnakeTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-11T22:25:47" hostname="DESKTOP-80302KR" time="0.033">
+<testsuite name="SnakeTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-15T20:53:50" hostname="DESKTOP-80302KR" time="0.04">
   <properties/>
-  <testcase name="testRight()" classname="SnakeTest" time="0.025"/>
+  <testcase name="testRight()" classname="SnakeTest" time="0.029"/>
   <testcase name="testDown()" classname="SnakeTest" time="0.001"/>
-  <testcase name="testLeft()" classname="SnakeTest" time="0.002"/>
-  <testcase name="testUp()" classname="SnakeTest" time="0.001"/>
+  <testcase name="testLeft()" classname="SnakeTest" time="0.001"/>
+  <testcase name="testUp()" classname="SnakeTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
