@@ -1,6 +1,7 @@
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -15,18 +16,11 @@ public class Game {
     Snake baby;
     Position position;
 
-    public Game() {
+    public Game(Screen screen) {
         try {
-            // configuring the terminal
-            TerminalSize terminalSize = new TerminalSize(40, 20);
-            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-            Terminal terminal = terminalFactory.createTerminal();
-
+            this.screen = screen;
             // configuring the screen
-            screen = new TerminalScreen(terminal);
-            screen.setCursorPosition(null);
-            screen.startScreen();
-            screen.doResizeIfNecessary();
+            screen.refresh();
 
             graphics = screen.newTextGraphics();
             board = new Board(40,20);
@@ -38,7 +32,7 @@ public class Game {
         }
     }
 
-    private void processKey(com.googlecode.lanterna.input.KeyStroke key) throws IOException{
+    private void processKey(KeyStroke key) throws IOException {
         board.processKey(key);
     }
 
@@ -55,5 +49,9 @@ public class Game {
             processKey(key);
         }
         screen.close();
+    }
+
+    public void close() throws IOException {
+
     }
 }

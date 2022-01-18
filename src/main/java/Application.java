@@ -1,9 +1,12 @@
 import java.io.IOException;
 
-// THE CLASS APPLICATION HAS THE PURPOSE TO START OUR SNAKE GAME!
 public class Application {
-    public static void main(String[] args) throws IOException{
-        Game game = new Game();
-        game.run();
+    public static void main(String[] args) throws IOException {
+        try {
+           Menu menu = new Menu(60, 30);
+           menu.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
