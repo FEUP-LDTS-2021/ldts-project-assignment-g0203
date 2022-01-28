@@ -15,21 +15,18 @@ import java.util.Random;
  * Represents the board where the user plays
  */
 public class Board extends JFrame implements KeyListener {
-    // SIZE OF THE BOARD
-    private final int width;
-    private final int height;
-
-    // VARIABLES RELATED TO THE GAME
-    public int points = 0;
     public BoardMenu boardMenu;
     public Snake baby;
     private List<Wall> walls;
     private List<Apple> apples = new ArrayList<>();
-    int speed;
+    public SoundEffect sound = new SoundEffect();
     public boolean available = true;
-    public int size;
     public boolean retrieved = false;
-    SoundEffect sound = new SoundEffect();
+    private final int width;
+    private final int height;
+    public int speed;
+    public int size;
+    public int points = 0;
 
     /**
      * Constructor of the class
@@ -68,51 +65,6 @@ public class Board extends JFrame implements KeyListener {
     }
 
     /**
-     * Moves the snake, and, if possible, plays sound
-     * @return Boolean dependant on whether it's possible to move to the position in question
-     */
-    public boolean moveSnake() {
-        try {
-            Thread.sleep(40);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (canSnakeMove(baby.getHead())) {
-            baby.move();
-            retrieved = false;
-            retrieveApples();
-            createApples();
-            return true;
-        }
-        else {
-            sound.inputSound("mixkit-retro-arcade-game-over-470.wav");
-            retrieved = false;
-            retrieveApples();
-            if(apples.isEmpty()) createApples();
-            return false;
-        }
-    }
-
-    /**
-     * Verifies if it's possible to move the snake to the wanted position
-     * @param position Where the snake is going to
-     * @return Boolean dependant on whether it's possible to move to the position in question
-     */
-    private boolean canSnakeMove(Position position) {
-
-        for(int i = 0; i < baby.getBody().size() - 1; i++)
-            if (baby.getBody().get(i).equals(baby.getHead()))
-                return false;
-        for (Wall wall : walls) {
-            if (wall.getPosition().equals(baby.getHead()))
-                return false;
-        }
-        if (position.getX() <= 0 || position.getX() >= width)
-            return false;
-        else return position.getY() > 0 || position.getY() < height;
-    }
-
-    /**
      * Places apple on board
      * @return List with all apples
      */
@@ -140,9 +92,48 @@ public class Board extends JFrame implements KeyListener {
     }
 
     /**
+     * Moves the snake, and, if possible, plays sound
+     * @return Boolean dependant on whether it's possible to move to the position in question
+     */
+    public boolean moveSnake() {
+        if (canSnakeMove(baby.getHead())) {
+            baby.move();
+            retrieved = false;
+            retrieveApples();
+            createApples();
+            return true;
+        }
+        else {
+            sound.inputSound("mixkit-retro-arcade-game-over-470.wav");
+            retrieved = false;
+            retrieveApples();
+            if(apples.isEmpty()) createApples();
+            return false;
+        }
+    }
+
+    /**
+     * Verifies if it's possible to move the snake to the wanted position
+     * @param position Where the snake is going to
+     * @return Boolean dependant on whether it's possible to move to the position in question
+     */
+    private boolean canSnakeMove(Position position) {
+        for(int i = 0; i < baby.getBody().size() - 1; i++)
+            if (baby.getBody().get(i).equals(baby.getHead()))
+                return false;
+        for (Wall wall : walls) {
+            if (wall.getPosition().equals(baby.getHead()))
+                return false;
+        }
+        if (position.getX() <= 0 || position.getX() >= width)
+            return false;
+        else return position.getY() > 0 || position.getY() < height;
+    }
+
+    /**
      * Draws board
      */
-    public void draw(TextGraphics graphics) {
+    public void drawBoardGraphics(TextGraphics graphics) {
         setVisible(true);
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#45733C"));
@@ -162,6 +153,9 @@ public class Board extends JFrame implements KeyListener {
     public int getSpeed() {
         return speed;
     }
+
+
+    // jframe in another class is better :)
 
     /**
      * Getter for width, overriden from JFrame
@@ -185,7 +179,7 @@ public class Board extends JFrame implements KeyListener {
     public void keyTyped(KeyEvent e) {}
 
     /**
-     * Makes the snake hange direction based on the input
+     * Makes the snake change direction based on the input
      * @param e User input
      */
     @Override

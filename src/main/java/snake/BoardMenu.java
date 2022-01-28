@@ -48,7 +48,7 @@ public class BoardMenu {
     /**
      * Draws pause menu
      */
-    private void printMenu() throws IOException {
+    private void pauseMenu() throws IOException {
         screen.clear();
         sound.inputSound("mixkit-unlock-game-notification-253.wav");
         textGraphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
@@ -57,7 +57,7 @@ public class BoardMenu {
         textGraphics.putString(17, 5, "No");
         //textGraphics.drawRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 10), '*');
         screen.refresh();
-        doInputOver(screen.readInput());
+        processInputGameOver(screen.readInput());
         screen.refresh();
     }
 
@@ -65,7 +65,7 @@ public class BoardMenu {
      * Processes user's input
      * @param key User's input
      */
-    private void doInput(KeyStroke key) throws IOException {
+    private void processInput(KeyStroke key) throws IOException {
         switch (key.getCharacter()) {
             case 'y' : {
                 System.exit(0);
@@ -87,9 +87,9 @@ public class BoardMenu {
      */
     public void run() throws IOException{
         screen.clear();
-        printMenu();
+        pauseMenu();
         screen.refresh();
-        doInput(screen.readInput());
+        processInput(screen.readInput());
         screen.refresh();
     }
 
@@ -105,7 +105,7 @@ public class BoardMenu {
         textGraphics.drawRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 10), '*');
         textGraphics.putString(1, 5, "Press any key to exit.");
         screen.refresh();
-        doInputOver(screen.readInput());
+        processInputGameOver(screen.readInput());
         screen.refresh();
     }
 
@@ -113,7 +113,7 @@ public class BoardMenu {
      * Exits game after dying
      * @param key User's input
      */
-    private void doInputOver(KeyStroke key) {
+    private void processInputGameOver(KeyStroke key) {
         if (key.getKeyType() == KeyType.Escape || key.getKeyType() == KeyType.ArrowUp || key.getKeyType() == KeyType.ArrowDown || key.getKeyType() == KeyType.ArrowLeft || key.getKeyType() == KeyType.ArrowRight) System.exit(0);
     }
 }

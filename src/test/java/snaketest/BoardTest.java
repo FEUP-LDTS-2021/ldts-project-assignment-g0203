@@ -1,6 +1,7 @@
 package snaketest;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import snake.*;
@@ -48,6 +49,10 @@ public class BoardTest {
         juice = test.createApples();
         assert(juice != null);
         //assert(baby.getHead().equals(juice.getFirst()));
+    }
+
+    @Test
+    public void eatApple() {
 
     }
 }

@@ -16,16 +16,16 @@ import java.io.*;
  * Game's main menu
  */
 public class Menu {
-    // SIZE OF THE MENU
     public int width;
     public int height;
 
     private Screen screen;
-    TextGraphics textGraphics;
-    private boolean val, settings;
-    int speed = 500;
-    int showSpeed = 3;
-    SoundEffect sound;
+    private TextGraphics textGraphics;
+    private boolean available, settings;
+    private final SoundEffect sound;
+
+    private int speed = 0;
+    private int showSpeed = 3;
 
     /**
      * Constructor of the class
@@ -46,28 +46,26 @@ public class Menu {
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
-
             textGraphics = screen.newTextGraphics();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         new Board(width, height, speed);
+        available = true;
         this.sound = new SoundEffect();
     }
 
     /**
      * Initializes menu
      */
-    public void run() throws IOException {
-
-        while (!val) {
+    public void runMenu() throws IOException {
+        while (available) {
             screen.clear();
             printMenu();
             screen.refresh();
-            int choice = getInput();
             sound.inputSound("mixkit-unlock-game-notification-253.wav");
-            doInput(choice);
+            doInput(getInput());
         }
     }
 
@@ -124,21 +122,21 @@ public class Menu {
             case '1' : {
                 Game snake = new Game(screen, speed);
                 screen = snake.screen;
-                snake.run();
+                snake.runGame();
                 break;
             }
             case '2' : {
                 printInstructions();
-                val = true;
+                available = false;
                 break;
             }
             case '3' : {
                 printSettings();
-                val = true;
+                available = false;
                 break;
             }
             case '0' : {
-                val = true;
+                available = false;
                 System.exit(0);
                 break;
             }
@@ -178,7 +176,7 @@ public class Menu {
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.Enter) {
                 sound.inputSound("mixkit-quick-lock-sound-2854.wav");
-                run();
+                runMenu();
             }
             else if (key.getKeyType() == KeyType.Escape) System.exit(0);
             else textGraphics.putString(0, pos, "Input invalid. Please try again.");
@@ -207,7 +205,7 @@ public class Menu {
             textGraphics.putString(11, 7, String.valueOf(showSpeed));
             screen.refresh();
         }
-        run();
+        runMenu();
     }
 
     /**
@@ -257,6 +255,9 @@ public class Menu {
         return false;
     }
 
+    /**
+     * Selects the speed for the snake
+     */
     private void doSpeed() {
         if (showSpeed == 5) speed = 40;
         if (showSpeed == 4) speed = 60;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="snaketest.SnakeTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-18T22:58:21" hostname="Raquels-MacBook-Air.local" time="0.01">
+<testsuite name="snaketest.SnakeTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-28T13:49:08" hostname="Raquels-Air.lan" time="0.009">
   <properties/>
-  <testcase name="testRight()" classname="snaketest.SnakeTest" time="0.002"/>
-  <testcase name="testDown()" classname="snaketest.SnakeTest" time="0.002"/>
+  <testcase name="testRight()" classname="snaketest.SnakeTest" time="0.003"/>
+  <testcase name="testDown()" classname="snaketest.SnakeTest" time="0.0"/>
   <testcase name="testLeft()" classname="snaketest.SnakeTest" time="0.001"/>
   <testcase name="testUp()" classname="snaketest.SnakeTest" time="0.0"/>
-  <testcase name="testIncrease()" classname="snaketest.SnakeTest" time="0.002"/>
+  <testcase name="testIncrease()" classname="snaketest.SnakeTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

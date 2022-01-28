@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="snaketest.BoardTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-18T22:58:20" hostname="Raquels-MacBook-Air.local" time="0.362">
+<testsuite name="snaketest.BoardTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-01-28T13:49:07" hostname="Raquels-Air.lan" time="0.44">
   <properties/>
-  <testcase name="processKeyTest()" classname="snaketest.BoardTest" time="0.333"/>
-  <testcase name="assureApples()" classname="snaketest.BoardTest" time="0.008"/>
+  <testcase name="eatApple()" classname="snaketest.BoardTest" time="0.415"/>
+  <testcase name="assureApples()" classname="snaketest.BoardTest" time="0.005"/>
   <testcase name="checkValues()" classname="snaketest.BoardTest" time="0.003"/>
   <testcase name="assureRetrieve()" classname="snaketest.BoardTest" time="0.004"/>
   <testcase name="assureWalls()" classname="snaketest.BoardTest" time="0.002"/>

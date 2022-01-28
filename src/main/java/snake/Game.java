@@ -9,10 +9,10 @@ import java.io.IOException;
  * Initializes the game itself, processes user's input and also closes it
  */
 public class Game {
-    Screen screen;
-    Board board;
-    TextGraphics graphics;
-    int speed;
+    public Screen screen;
+    public Board board;
+    public TextGraphics graphics;
+    public int speed;
 
     /**
      * Constructor of class
@@ -23,12 +23,9 @@ public class Game {
         try {
             this.screen = screen;
             this.speed = speed;
-            // configuring the screen
             screen.refresh();
-
             graphics = screen.newTextGraphics();
             board = new Board(40,20, speed);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,18 +34,18 @@ public class Game {
     /**
      * Updates board screen
      */
-    public void draw() throws IOException {
+    public void drawGameGraphics() throws IOException {
         screen.clear();
-        board.draw(graphics);
+        board.drawBoardGraphics(graphics);
         screen.refresh();
     }
 
     /**
      * Initializes the game itself, makes snake move and also closes it
      */
-    public void run() throws IOException {
+    public void runGame() throws IOException {
         while(board.available) {
-            draw();
+            drawGameGraphics();
             if (!board.moveSnake()) break;
         }
         gameOver();
