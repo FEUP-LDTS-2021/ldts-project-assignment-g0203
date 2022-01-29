@@ -7,7 +7,7 @@ To increase difficulty, different speeds are available.
 
 This project was developed by Afonso Pinto (up202008014@up.pt) and Raquel Carneiro (up202005330@up.pt) for LDTS 2021/2022.
 
-###Implemented Features
+### Implemented Features
 #### Snake
 + Follows the same direction when no key is pressed, that means that it can crawl by itself;
 + Grows in size by eating apples;
@@ -38,11 +38,11 @@ In your settings, you can customize the speed of your snake. You have 5 speeds a
 ### Game Over Menu
 ![Game Over Menu](shortVideos/GameOver.gif "Game Over")
 
-###Planned Features
+### Planned Features
 #### Snake
 + Create monster that would go to random positions and, if they touch the snake, kill it.
 
-###Design
+### Design
 ![UML Diagram](prints/uml.png "UML")
 
 ## Code Smells and Possible Refactorings
